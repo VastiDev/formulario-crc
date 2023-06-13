@@ -1,5 +1,6 @@
 package com.wakandaacademy.formulariocrc.cliente.domain;
 
+import com.wakandaacademy.formulariocrc.cliente.application.api.ClienteRequest;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -40,20 +41,19 @@ public class Cliente {
     @NotNull
     private Boolean aceitaTermos;
 
-
     private LocalDateTime dataHoraDoCadastro;
 
-    public Cliente(String nomeCompleto, String email, String celular, String telefone,
-                   Sexo sexo, LocalDate dataNascimento, String cpf, AreaInteresse areaInteresse, Boolean aceitaTermos) {
-        this.nomeCompleto = nomeCompleto;
-        this.email = email;
-        this.celular = celular;
-        this.telefone = telefone;
-        this.sexo = sexo;
-        this.dataNascimento = dataNascimento;
-        this.cpf = cpf;
-        this.areaInteresse = areaInteresse;
-        this.aceitaTermos = aceitaTermos;
+    public Cliente(ClienteRequest clienteRequest) {
+        this.nomeCompleto = clienteRequest.getNomeCompleto();
+        this.email = clienteRequest.getEmail();
+        this.celular = clienteRequest.getCelular();
+        this.telefone = clienteRequest.getTelefone();
+        this.sexo = clienteRequest.getSexo();
+        this.dataNascimento = clienteRequest.getDataNascimento();
+        this.cpf = clienteRequest.getCpf();
+        this.areaInteresse = clienteRequest.getAreaInteresse();
+        this.aceitaTermos = clienteRequest.getAceitaTermos();
         this.dataHoraDoCadastro = LocalDateTime.now();
+
     }
 }
