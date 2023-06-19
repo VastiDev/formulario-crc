@@ -5,11 +5,8 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.br.CPF;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -19,10 +16,9 @@ import java.util.UUID;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @Getter
-@Entity
+@Document(collection = "cliente")
 public class Cliente {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID idCliente;
     @NotBlank
     private String nomeCompleto;
@@ -44,6 +40,7 @@ public class Cliente {
     private LocalDateTime dataHoraDoCadastro;
 
     public Cliente(ClienteRequest clienteRequest) {
+        this.idCliente = UUID.randomUUID();
         this.nomeCompleto = clienteRequest.getNomeCompleto();
         this.email = clienteRequest.getEmail();
         this.celular = clienteRequest.getCelular();

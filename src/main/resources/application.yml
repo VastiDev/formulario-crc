@@ -1,3 +1,14 @@
 server:
   servlet:
     context-path: /formulario-crc/api
+
+spring:
+  data:
+    mongodb:
+      authentication-database: admin
+      uri: ${MONGO_DB_URI:mongodb+srv://myFirstDataBase:qmfyjpurWGz9aoVz@cluster0.jh5wppb.mongodb.net/Cluster0?retryWrites=true&w=majority}
+      auto-index-creation: true
+
+springdoc:
+  swagger-ui:
+    path: /swagger
