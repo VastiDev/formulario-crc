@@ -37,8 +37,8 @@ public class ClienteApplicationService implements ClienteService {
     @Override
     public ClienteDetalhadoResponse buscaClientePorCPF(String cpf) {
         log.info("[start] ClienteApplicationService - buscaClientePorCPF ");
+        Cliente cliente = clienteRepository.buscaClientePorCPF(cpf);
         log.info("[finish] ClienteApplicationService - buscaClientePorCPF ");
-
-        return null;
+        return new ClienteDetalhadoResponse(cliente);
     }
 }

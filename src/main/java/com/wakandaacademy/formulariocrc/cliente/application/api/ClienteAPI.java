@@ -22,3 +22,4 @@ public interface ClienteAPI {
     @ResponseStatus(code = HttpStatus.OK)
     ClienteDetalhadoResponse getClientePorCPF(@PathVariable String cpf);
 }
+

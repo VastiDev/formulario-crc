@@ -8,4 +8,5 @@ import java.util.List;
 public interface ClienteRepository {
     Cliente salva(Cliente cliente);
     List<Cliente> buscaTodosClientes();
+    Cliente buscaClientePorCPF(String cpf);
 }
