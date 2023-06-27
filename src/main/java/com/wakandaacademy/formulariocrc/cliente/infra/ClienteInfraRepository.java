@@ -4,7 +4,6 @@ import com.wakandaacademy.formulariocrc.cliente.application.repository.ClienteRe
 import com.wakandaacademy.formulariocrc.cliente.domain.Cliente;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -13,12 +12,12 @@ import java.util.List;
 @Log4j2
 @RequiredArgsConstructor
 public class ClienteInfraRepository implements ClienteRepository {
-    private final ClienteSpringDataJPARepository  clienteSpringDataJPARepository;
+    private final ClienteSpringDataMongoRepository clienteSpringDataMongoRepository;
 
     @Override
     public Cliente salva(Cliente cliente) {
         log.info("[start] ClienteInfraRepository - salva ");
-        clienteSpringDataJPARepository.save(cliente);
+        clienteSpringDataMongoRepository.save(cliente);
         log.info("[finish] ClienteInfraRepository - salva ");
         return cliente;
     }
@@ -26,7 +25,7 @@ public class ClienteInfraRepository implements ClienteRepository {
     @Override
     public List<Cliente> buscaTodosClientes() {
         log.info("[start] ClienteInfraRepository - buscaTodosClientes ");
-        List<Cliente> todosClientes = clienteSpringDataJPARepository.findAll();
+        List<Cliente> todosClientes = clienteSpringDataMongoRepository.findAll();
         log.info("[finish] ClienteInfraRepository - buscaTodosClientes ");
         return todosClientes;
     }
