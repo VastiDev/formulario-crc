@@ -41,7 +41,8 @@ public class ClienteController implements ClienteAPI {
     @Override
     public List<ClientesListResponsePorArea> getClientesPorArea(AreaInteresse areaInteresse) {
         log.info("[start] ClienteController - getClientesPorArea");
+        List<ClientesListResponsePorArea> clientes = clienteService.buscaClientesPorArea(areaInteresse);
         log.info("[finish] ClienteController - getClientesPorArea");
-        return null;
+        return clientes;
     }
 }

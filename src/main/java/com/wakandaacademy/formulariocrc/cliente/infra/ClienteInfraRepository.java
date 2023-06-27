@@ -1,6 +1,7 @@
 package com.wakandaacademy.formulariocrc.cliente.infra;
 
 import com.wakandaacademy.formulariocrc.cliente.application.repository.ClienteRepository;
+import com.wakandaacademy.formulariocrc.cliente.domain.AreaInteresse;
 import com.wakandaacademy.formulariocrc.cliente.domain.Cliente;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -38,5 +39,10 @@ public class ClienteInfraRepository implements ClienteRepository {
                 .orElseThrow(() -> new RuntimeException("cliente não encontrado"));
         log.info("[finish] ClienteInfraRepository - buscaClientePorCPF ");
         return cliente;
+    }
+
+    @Override
+    public List<Cliente> buscaClientesPorArea(AreaInteresse areaInteresse) {
+        return null;
     }
 }

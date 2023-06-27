@@ -1,10 +1,8 @@
 package com.wakandaacademy.formulariocrc.cliente.application.service;
 
-import com.wakandaacademy.formulariocrc.cliente.application.api.ClienteDetalhadoResponse;
-import com.wakandaacademy.formulariocrc.cliente.application.api.ClienteListResponse;
-import com.wakandaacademy.formulariocrc.cliente.application.api.ClienteRequest;
-import com.wakandaacademy.formulariocrc.cliente.application.api.ClienteResponse;
+import com.wakandaacademy.formulariocrc.cliente.application.api.*;
 import com.wakandaacademy.formulariocrc.cliente.application.repository.ClienteRepository;
+import com.wakandaacademy.formulariocrc.cliente.domain.AreaInteresse;
 import com.wakandaacademy.formulariocrc.cliente.domain.Cliente;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -40,5 +38,13 @@ public class ClienteApplicationService implements ClienteService {
         Cliente cliente = clienteRepository.buscaClientePorCPF(cpf);
         log.info("[finish] ClienteApplicationService - buscaClientePorCPF ");
         return new ClienteDetalhadoResponse(cliente);
+    }
+
+    @Override
+    public List<ClientesListResponsePorArea> buscaClientesPorArea(AreaInteresse areaInteresse) {
+        log.info("[start] ClienteApplicationService - buscaClientesPorArea");
+
+        log.info("[finish] ClienteApplicationService - buscaClientesPorArea");
+        return null;
     }
 }
