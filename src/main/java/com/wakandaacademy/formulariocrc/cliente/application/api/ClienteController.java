@@ -1,6 +1,7 @@
 package com.wakandaacademy.formulariocrc.cliente.application.api;
 
 import com.wakandaacademy.formulariocrc.cliente.application.service.ClienteService;
+import com.wakandaacademy.formulariocrc.cliente.domain.AreaInteresse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.RestController;
@@ -35,5 +36,12 @@ public class ClienteController implements ClienteAPI {
         ClienteDetalhadoResponse clienteDetalhado = clienteService.buscaClientePorCPF(cpf);
         log.info("[finish] ClienteController - getClientePorCPF");
         return clienteDetalhado;
+    }
+
+    @Override
+    public List<ClientesListResponsePorArea> getClientesPorArea(AreaInteresse areaInteresse) {
+        log.info("[start] ClienteController - getClientesPorArea");
+        log.info("[finish] ClienteController - getClientesPorArea");
+        return null;
     }
 }
