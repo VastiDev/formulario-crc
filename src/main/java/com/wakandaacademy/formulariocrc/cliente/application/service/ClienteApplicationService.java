@@ -1,5 +1,6 @@
 package com.wakandaacademy.formulariocrc.cliente.application.service;
 
+import com.wakandaacademy.formulariocrc.cliente.application.api.ClienteDetalhadoResponse;
 import com.wakandaacademy.formulariocrc.cliente.application.api.ClienteListResponse;
 import com.wakandaacademy.formulariocrc.cliente.application.api.ClienteRequest;
 import com.wakandaacademy.formulariocrc.cliente.application.api.ClienteResponse;
@@ -31,5 +32,13 @@ public class ClienteApplicationService implements ClienteService {
         List<Cliente> clientes = clienteRepository.buscaTodosClientes();
         log.info("[finish] ClienteApplicationService - buscaTodosClientes ");
         return ClienteListResponse.converte(clientes);
+    }
+
+    @Override
+    public ClienteDetalhadoResponse buscaClientePorCPF(String cpf) {
+        log.info("[start] ClienteApplicationService - buscaClientePorCPF ");
+        log.info("[finish] ClienteApplicationService - buscaClientePorCPF ");
+
+        return null;
     }
 }

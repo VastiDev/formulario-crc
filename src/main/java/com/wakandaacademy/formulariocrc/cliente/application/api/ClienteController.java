@@ -32,9 +32,8 @@ public class ClienteController implements ClienteAPI {
     public ClienteDetalhadoResponse getClientePorCPF(String cpf) {
         log.info("[start] ClienteController - getClientePorCPF");
         log.info("[cpf] {}", cpf);
+        ClienteDetalhadoResponse clienteDetalhado = clienteService.buscaClientePorCPF(cpf);
         log.info("[finish] ClienteController - getClientePorCPF");
-        return null;
+        return clienteDetalhado;
     }
-
-
 }
