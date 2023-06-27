@@ -21,5 +21,7 @@ public interface ClienteAPI {
     @GetMapping(value = "/{cpf}")
     @ResponseStatus(code = HttpStatus.OK)
     ClienteDetalhadoResponse getClientePorCPF(@PathVariable String cpf);
+
+
 }
 

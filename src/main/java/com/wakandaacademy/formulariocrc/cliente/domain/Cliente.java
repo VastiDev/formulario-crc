@@ -2,6 +2,7 @@ package com.wakandaacademy.formulariocrc.cliente.domain;
 
 import com.wakandaacademy.formulariocrc.cliente.application.api.ClienteRequest;
 import lombok.AccessLevel;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.br.CPF;
@@ -16,6 +17,7 @@ import java.util.UUID;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @Getter
+@Data
 @Document(collection = "cliente")
 public class Cliente {
     @Id
