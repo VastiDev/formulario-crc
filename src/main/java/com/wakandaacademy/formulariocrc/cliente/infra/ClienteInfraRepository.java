@@ -43,6 +43,9 @@ public class ClienteInfraRepository implements ClienteRepository {
 
     @Override
     public List<Cliente> buscaClientesPorArea(AreaInteresse areaInteresse) {
-        return null;
+        log.info("[start] ClienteInfraRepository - buscaClientesPorArea");
+        List<Cliente> todosClientesPorArea = clienteSpringDataMongoRepository.findByAreaInteresse(areaInteresse);
+        log.info("[finish] ClienteInfraRepository - buscaClientesPorArea");
+        return todosClientesPorArea;
     }
 }

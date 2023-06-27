@@ -22,4 +22,20 @@ public class ClientesListResponsePorArea {
     private LocalDateTime dataHoraDoCadastro;
 
 
+    public static List<ClientesListResponsePorArea> converte(List<Cliente> clientes) {
+        return clientes.stream()
+                .map(ClientesListResponsePorArea::new)
+                .collect(Collectors.toList());
+    }
+
+    public ClientesListResponsePorArea(Cliente cliente) {
+        this.idCliente = cliente.getIdCliente();
+        this.nomeCompleto = cliente.getNomeCompleto();
+        this.email = cliente.getEmail();
+        this.celular = cliente.getCelular();
+        this.telefone = cliente.getTelefone();
+        this.sexo = cliente.getSexo();
+        this.dataNascimento = cliente.getDataNascimento();
+        this.dataHoraDoCadastro = cliente.getDataHoraDoCadastro();
+    }
 }

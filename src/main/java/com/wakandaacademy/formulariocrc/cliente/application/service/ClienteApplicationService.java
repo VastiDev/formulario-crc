@@ -43,8 +43,8 @@ public class ClienteApplicationService implements ClienteService {
     @Override
     public List<ClientesListResponsePorArea> buscaClientesPorArea(AreaInteresse areaInteresse) {
         log.info("[start] ClienteApplicationService - buscaClientesPorArea");
-
+        List<Cliente> clientes = clienteRepository.buscaClientesPorArea(areaInteresse);
         log.info("[finish] ClienteApplicationService - buscaClientesPorArea");
-        return null;
+        return ClientesListResponsePorArea.converte(clientes);
     }
 }
