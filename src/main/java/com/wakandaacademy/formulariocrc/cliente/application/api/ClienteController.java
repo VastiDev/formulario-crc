@@ -27,4 +27,14 @@ public class ClienteController implements ClienteAPI {
         log.info("[finish] ClienteController - getTodosClientes");
         return clientes;
     }
+
+    @Override
+    public ClienteDetalhadoResponse getClientePorCPF(String cpf) {
+        log.info("[start] ClienteController - getClientePorCPF");
+        log.info("[cpf] {}", cpf);
+        log.info("[finish] ClienteController - getClientePorCPF");
+        return null;
+    }
+
+
 }
