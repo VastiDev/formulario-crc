@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/v1/cliente")
@@ -26,6 +27,11 @@ public interface ClienteAPI {
     @GetMapping(value = "/v2/{areaInteresse}" )
     @ResponseStatus(code = HttpStatus.OK)
     List<ClientesListResponsePorArea> getClientesPorArea(@PathVariable AreaInteresse areaInteresse);
+
+    @GetMapping(value = "/v3/{idCliente}")
+    @ResponseStatus(code = HttpStatus.OK)
+    ClienteDetalhaResponse getClientePorId(@PathVariable UUID idCliente);
+
 
 }
 
