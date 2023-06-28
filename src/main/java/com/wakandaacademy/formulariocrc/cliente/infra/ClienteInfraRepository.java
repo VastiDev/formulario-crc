@@ -3,8 +3,10 @@ package com.wakandaacademy.formulariocrc.cliente.infra;
 import com.wakandaacademy.formulariocrc.cliente.application.repository.ClienteRepository;
 import com.wakandaacademy.formulariocrc.cliente.domain.AreaInteresse;
 import com.wakandaacademy.formulariocrc.cliente.domain.Cliente;
+import com.wakandaacademy.formulariocrc.handler.APIException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -37,7 +39,7 @@ public class ClienteInfraRepository implements ClienteRepository {
     public Cliente buscaClientePorCPF(String cpf) {
         log.info("[start] ClienteInfraRepository - buscaClientePorCPF ");
         Cliente cliente = clienteSpringDataMongoRepository.findByCpf(cpf)
-                .orElseThrow(() -> new RuntimeException("cliente não encontrado"));
+                .orElseThrow(() -> APIException.build(HttpStatus.NOT_FOUND,"cliente não encontrado"));
         log.info("[finish] ClienteInfraRepository - buscaClientePorCPF ");
         return cliente;
     }
@@ -54,7 +56,7 @@ public class ClienteInfraRepository implements ClienteRepository {
     public Cliente buscaClientePorId(UUID idCliente) {
         log.info("[start] ClienteInfraRepository - buscaClientePorId");
         Cliente cliente = clienteSpringDataMongoRepository.findById(idCliente)
-                        .orElseThrow(() -> new RuntimeException("cliente não encontrado"));
+                        .orElseThrow(() -> APIException.build(HttpStatus.NOT_FOUND,"cliente não encontrado"));
         log.info("[finish] ClienteInfraRepository - buscaClientePorId");
         return cliente;
     }
