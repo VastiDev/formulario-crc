@@ -68,6 +68,7 @@ public class ClienteController implements ClienteAPI {
     public void patchAlteraCliente(String cpf, ClienteAlteracaoRequest clienteAlteracaoRequest) {
         log.info("[start] ClienteController - patchAlteraCliente");
         log.info("[cpf] {}", cpf);
+        clienteService.patchAlteraCliente(cpf, clienteAlteracaoRequest);
         log.info("[finish] ClienteController - patchAlteraCliente");
     }
 }

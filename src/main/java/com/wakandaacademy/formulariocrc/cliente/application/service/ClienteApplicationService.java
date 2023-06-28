@@ -65,4 +65,13 @@ public class ClienteApplicationService implements ClienteService {
         log.info("[finish] ClienteApplicationService - deletaClientePorId");
 
     }
+
+    @Override
+    public void patchAlteraCliente(String cpf, ClienteAlteracaoRequest clienteAlteracaoRequest) {
+        log.info("[start] ClienteApplicationService - patchAlteraCliente");
+        Cliente cliente = clienteRepository.buscaClientePorCPF(cpf);
+        cliente.altera(clienteAlteracaoRequest);
+        clienteRepository.salva(cliente);
+        log.info("[finish] ClienteApplicationService - patchAlteraCliente");
+    }
 }

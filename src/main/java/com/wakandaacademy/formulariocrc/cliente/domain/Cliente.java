@@ -1,5 +1,6 @@
 package com.wakandaacademy.formulariocrc.cliente.domain;
 
+import com.wakandaacademy.formulariocrc.cliente.application.api.ClienteAlteracaoRequest;
 import com.wakandaacademy.formulariocrc.cliente.application.api.ClienteRequest;
 import lombok.AccessLevel;
 import lombok.Data;
@@ -46,6 +47,7 @@ public class Cliente {
     private Boolean aceitaTermos;
 
     private LocalDateTime dataHoraDoCadastro;
+    private LocalDateTime dataHoraDaUltimaAlteracao;
 
     public Cliente(ClienteRequest clienteRequest) {
         this.idCliente = UUID.randomUUID();
@@ -59,6 +61,15 @@ public class Cliente {
         this.areaInteresse = clienteRequest.getAreaInteresse();
         this.aceitaTermos = clienteRequest.getAceitaTermos();
         this.dataHoraDoCadastro = LocalDateTime.now();
+
+    }
+
+    public void altera(ClienteAlteracaoRequest clienteAlteracaoRequest) {
+        this.nomeCompleto = clienteAlteracaoRequest.getNomeCompleto();
+        this.celular = clienteAlteracaoRequest.getCelular();
+        this.telefone = clienteAlteracaoRequest.getTelefone();
+        this.areaInteresse = clienteAlteracaoRequest.getAreaInteresse();
+        this.dataHoraDaUltimaAlteracao = LocalDateTime.now();
 
     }
 }
