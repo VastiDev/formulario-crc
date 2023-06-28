@@ -50,8 +50,10 @@ public class ClienteController implements ClienteAPI {
     @Override
     public ClienteDetalhaResponse getClientePorId(UUID idCliente) {
         log.info("[start] ClienteController - getClientesPorId");
+        log.info("[idCliente] {}", idCliente);
+        ClienteDetalhaResponse clientedetalha = clienteService.buscaClientePorId(idCliente);
         log.info("[finish] ClienteController - getClientesPorId");
-        return null;
+        return clientedetalha;
     }
 
 

@@ -9,6 +9,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @Log4j2
@@ -46,5 +47,12 @@ public class ClienteApplicationService implements ClienteService {
         List<Cliente> clientes = clienteRepository.buscaClientesPorArea(areaInteresse);
         log.info("[finish] ClienteApplicationService - buscaClientesPorArea");
         return ClientesListResponsePorArea.converte(clientes);
+    }
+
+    @Override
+    public ClienteDetalhaResponse buscaClientePorId(UUID idCliente) {
+        log.info("[start] ClienteApplicationService - buscaClientePorId");
+        log.info("[finish] ClienteApplicationService - buscaClientePorId");
+        return null;
     }
 }
