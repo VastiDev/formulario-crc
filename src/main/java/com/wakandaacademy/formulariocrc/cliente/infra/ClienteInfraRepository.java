@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Repository
 @Log4j2
@@ -47,5 +48,14 @@ public class ClienteInfraRepository implements ClienteRepository {
         List<Cliente> todosClientesPorArea = clienteSpringDataMongoRepository.findByAreaInteresse(areaInteresse);
         log.info("[finish] ClienteInfraRepository - buscaClientesPorArea");
         return todosClientesPorArea;
+    }
+
+    @Override
+    public Cliente buscaClientePorId(UUID idCliente) {
+        log.info("[start] ClienteInfraRepository - buscaClientePorId");
+        Cliente cliente = clienteSpringDataMongoRepository.findById(idCliente)
+                        .orElseThrow(() -> new RuntimeException("cliente não encontrado"));
+        log.info("[finish] ClienteInfraRepository - buscaClientePorId");
+        return cliente;
     }
 }
