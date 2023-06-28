@@ -17,4 +17,6 @@ public interface ClienteService {
     List<ClientesListResponsePorArea> buscaClientesPorArea(AreaInteresse areaInteresse);
 
     ClienteDetalhaResponse buscaClientePorId(UUID idCliente);
+
+    void deletaClientePorId(UUID idCliente);
 }
