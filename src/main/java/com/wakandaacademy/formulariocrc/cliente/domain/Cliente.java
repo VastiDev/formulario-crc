@@ -1,5 +1,6 @@
 package com.wakandaacademy.formulariocrc.cliente.domain;
 
+import com.wakandaacademy.formulariocrc.cliente.application.api.ClienteAlteracaoRequest;
 import com.wakandaacademy.formulariocrc.cliente.application.api.ClienteRequest;
 import lombok.AccessLevel;
 import lombok.Data;
@@ -7,7 +8,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.br.CPF;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -26,6 +30,7 @@ public class Cliente {
     private String nomeCompleto;
     @NotBlank
     @Email
+
     private String email;
     @NotBlank
     private String celular;
@@ -34,12 +39,15 @@ public class Cliente {
     @NotNull
     private LocalDate dataNascimento;
     @CPF
+    @Field("cpf")
+    @Indexed(unique = true)
     private String cpf;
     private AreaInteresse areaInteresse;
     @NotNull
     private Boolean aceitaTermos;
 
     private LocalDateTime dataHoraDoCadastro;
+    private LocalDateTime dataHoraDaUltimaAlteracao;
 
     public Cliente(ClienteRequest clienteRequest) {
         this.idCliente = UUID.randomUUID();
@@ -53,6 +61,15 @@ public class Cliente {
         this.areaInteresse = clienteRequest.getAreaInteresse();
         this.aceitaTermos = clienteRequest.getAceitaTermos();
         this.dataHoraDoCadastro = LocalDateTime.now();
+
+    }
+
+    public void altera(ClienteAlteracaoRequest clienteAlteracaoRequest) {
+        this.nomeCompleto = clienteAlteracaoRequest.getNomeCompleto();
+        this.celular = clienteAlteracaoRequest.getCelular();
+        this.telefone = clienteAlteracaoRequest.getTelefone();
+        this.areaInteresse = clienteAlteracaoRequest.getAreaInteresse();
+        this.dataHoraDaUltimaAlteracao = LocalDateTime.now();
 
     }
 }

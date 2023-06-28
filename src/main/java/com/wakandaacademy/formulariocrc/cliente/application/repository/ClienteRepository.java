@@ -5,6 +5,7 @@ import com.wakandaacademy.formulariocrc.cliente.domain.AreaInteresse;
 import com.wakandaacademy.formulariocrc.cliente.domain.Cliente;
 
 import java.util.List;
+import java.util.UUID;
 
 public interface ClienteRepository {
     Cliente salva(Cliente cliente);
@@ -12,4 +13,6 @@ public interface ClienteRepository {
     Cliente buscaClientePorCPF(String cpf);
 
     List<Cliente> buscaClientesPorArea(AreaInteresse areaInteresse);
+    Cliente buscaClientePorId(UUID idCliente);
+    void deletaCliente(Cliente cliente);
 }

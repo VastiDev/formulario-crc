@@ -3,12 +3,15 @@ package com.wakandaacademy.formulariocrc.cliente.infra;
 import com.wakandaacademy.formulariocrc.cliente.application.repository.ClienteRepository;
 import com.wakandaacademy.formulariocrc.cliente.domain.AreaInteresse;
 import com.wakandaacademy.formulariocrc.cliente.domain.Cliente;
+import com.wakandaacademy.formulariocrc.handler.APIException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Repository
 @Log4j2
@@ -36,7 +39,7 @@ public class ClienteInfraRepository implements ClienteRepository {
     public Cliente buscaClientePorCPF(String cpf) {
         log.info("[start] ClienteInfraRepository - buscaClientePorCPF ");
         Cliente cliente = clienteSpringDataMongoRepository.findByCpf(cpf)
-                .orElseThrow(() -> new RuntimeException("cliente não encontrado"));
+                .orElseThrow(() -> APIException.build(HttpStatus.NOT_FOUND,"cliente não encontrado"));
         log.info("[finish] ClienteInfraRepository - buscaClientePorCPF ");
         return cliente;
     }
@@ -47,5 +50,22 @@ public class ClienteInfraRepository implements ClienteRepository {
         List<Cliente> todosClientesPorArea = clienteSpringDataMongoRepository.findByAreaInteresse(areaInteresse);
         log.info("[finish] ClienteInfraRepository - buscaClientesPorArea");
         return todosClientesPorArea;
+    }
+
+    @Override
+    public Cliente buscaClientePorId(UUID idCliente) {
+        log.info("[start] ClienteInfraRepository - buscaClientePorId");
+        Cliente cliente = clienteSpringDataMongoRepository.findById(idCliente)
+                        .orElseThrow(() -> APIException.build(HttpStatus.NOT_FOUND,"cliente não encontrado"));
+        log.info("[finish] ClienteInfraRepository - buscaClientePorId");
+        return cliente;
+    }
+
+    @Override
+    public void deletaCliente(Cliente cliente) {
+        log.info("[start] ClienteInfraRepository - deletaCliente");
+        clienteSpringDataMongoRepository.delete(cliente);
+        log.info("[finish] ClienteInfraRepository - deletaCliente");
+
     }
 }

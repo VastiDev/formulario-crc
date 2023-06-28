@@ -7,6 +7,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @Log4j2
@@ -44,5 +45,30 @@ public class ClienteController implements ClienteAPI {
         List<ClientesListResponsePorArea> clientes = clienteService.buscaClientesPorArea(areaInteresse);
         log.info("[finish] ClienteController - getClientesPorArea");
         return clientes;
+    }
+
+    @Override
+    public ClienteDetalhaResponse getClientePorId(UUID idCliente) {
+        log.info("[start] ClienteController - getClientesPorId");
+        log.info("[idCliente] {}", idCliente);
+        ClienteDetalhaResponse clientedetalha = clienteService.buscaClientePorId(idCliente);
+        log.info("[finish] ClienteController - getClientesPorId");
+        return clientedetalha;
+    }
+
+    @Override
+    public void deletaClientePorId(UUID idCliente) {
+        log.info("[start] ClienteController - deletaClientePorId");
+        log.info("[idCliente] {}", idCliente);
+        clienteService.deletaClientePorId(idCliente);
+        log.info("[finish] ClienteController - deletaClientePorId");
+    }
+
+    @Override
+    public void patchAlteraCliente(String cpf, ClienteAlteracaoRequest clienteAlteracaoRequest) {
+        log.info("[start] ClienteController - patchAlteraCliente");
+        log.info("[cpf] {}", cpf);
+        clienteService.patchAlteraCliente(cpf, clienteAlteracaoRequest);
+        log.info("[finish] ClienteController - patchAlteraCliente");
     }
 }

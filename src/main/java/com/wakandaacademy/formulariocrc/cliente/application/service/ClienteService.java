@@ -5,6 +5,7 @@ import com.wakandaacademy.formulariocrc.cliente.domain.AreaInteresse;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public interface ClienteService {
@@ -14,4 +15,10 @@ public interface ClienteService {
     ClienteDetalhadoResponse buscaClientePorCPF(String cpf);
 
     List<ClientesListResponsePorArea> buscaClientesPorArea(AreaInteresse areaInteresse);
+
+    ClienteDetalhaResponse buscaClientePorId(UUID idCliente);
+
+    void deletaClientePorId(UUID idCliente);
+
+    void patchAlteraCliente(String cpf, ClienteAlteracaoRequest clienteAlteracaoRequest);
 }
