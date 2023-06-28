@@ -61,7 +61,7 @@ public class ClienteApplicationService implements ClienteService {
     public void deletaClientePorId(UUID idCliente) {
         log.info("[start] ClienteApplicationService - deletaClientePorId");
         Cliente cliente = clienteRepository.buscaClientePorId(idCliente);
- //       clienteRepository.deletaCliente(cliente);
+        clienteRepository.deletaCliente(cliente);
         log.info("[finish] ClienteApplicationService - deletaClientePorId");
 
     }
