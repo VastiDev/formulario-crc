@@ -36,5 +36,9 @@ public interface ClienteAPI {
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
     void deletaClientePorId(@PathVariable UUID idCliente);
 
+    @GetMapping(value = "/{cpf}")
+    @ResponseStatus(code = HttpStatus.OK)
+    ClienteDetalhadoResponse getClientePorCPF(@PathVariable String cpf);
+
 }
 

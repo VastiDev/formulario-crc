@@ -7,7 +7,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.br.CPF;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -26,6 +29,7 @@ public class Cliente {
     private String nomeCompleto;
     @NotBlank
     @Email
+
     private String email;
     @NotBlank
     private String celular;
@@ -34,6 +38,8 @@ public class Cliente {
     @NotNull
     private LocalDate dataNascimento;
     @CPF
+    @Field("cpf")
+    @Indexed(unique = true)
     private String cpf;
     private AreaInteresse areaInteresse;
     @NotNull
